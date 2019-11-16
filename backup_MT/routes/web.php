@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/gioi-thieu', function() {
+    return  ('toi la huynh duy tan');
+
+});
+Route::get('/lien-he', function() {
+    return  ('<h1>can tho</h1>');
+
+});
