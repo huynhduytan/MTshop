@@ -3,7 +3,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\PhpVnDataGenerator\VnBase;
 use Illuminate\PhpVnDataGenerator\VnFullname;
 use Illuminate\PhpVnDataGenerator\VnPersonalInfo;
-class Khuyenmai_sanphamTableSeeder extends Seeder {
+class KhuyenmaiSanphamTableSeeder extends Seeder {
     /**
      * Run the database seeds.
      *

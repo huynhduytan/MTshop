@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Chude_sanphamTableSeeder extends Seeder
+class ChudeSanphamTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
