@@ -36,6 +36,6 @@ class CreateCuscKhuyenmaiSanphamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('khuyenmai_sanpham');
+        Schema::dropIfExists('cusc_khuyenmai_sanpham');
     }
 }
