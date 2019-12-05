@@ -3,6 +3,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\PhpVnDataGenerator\VnBase;
 use Illuminate\PhpVnDataGenerator\VnFullname;
 use Illuminate\PhpVnDataGenerator\VnPersonalInfo;
+use Carbon\Carbon;
 class ThanhtoanTableSeeder extends Seeder {
     /**
      * Run the database seeds.
@@ -10,33 +11,23 @@ class ThanhtoanTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        $today = new DateTime('2010-01-01 08:00:00');
-        $list = [
-            [
-                'tt_ma'       => 1,
-                'tt_ten'      => "Tiền mặt",
-                'tt_dienGiai' => "Quý khách thanh toán trực tiếp tại cửa hàng",
-                'tt_taoMoi'   => $today->format('Y-m-d H:i:s'),
-                'tt_capNhat'  => $today->format('Y-m-d H:i:s')
-            ], 
-            [
-                'tt_ma'       => 2,
-                'tt_ten'      => "Thanh toán khi nhận hàng",
-                'tt_dienGiai' => "Nhân viên của chúng tôi sẽ liên lạc với Quý khách để nhận thông tin về địa chỉ và thời gian giao hàng. Nhân viên của chúng tôi sẽ đến giao hàng và nhận tiền sau khi Quý khách đã nhận và kiểm tra hàng.",
-                'tt_taoMoi'   => $today->format('Y-m-d H:i:s'),
-                'tt_capNhat'  => $today->format('Y-m-d H:i:s')
-            ], 
-            [
-                'tt_ma'       => 3,
-                'tt_ten'      => "Chuyển khoản",
-                'tt_dienGiai' => "<div style='text-align: justify'>Quý khách có thể đến bất kì Phòng giao dịch ngân hàng, ATM hoặc sử dụng tính năng Internet Banking để chuyển tiền vào một trong các tài khoản sau:</div>".
-                    "<div style='text-align: center'><img src='public/template/images/info/atm.png'/></div>".
-                    "<div style='text-align: justify; text-style: italic; margin-left: 20px'><b>Lưu ý:</b> Sau khi thanh toán, Quý khách cần thông báo lại cho chúng tôi thông tin chuyển khoản của Quý khách bao gồm: Tên người chuyển và số điện thoại hoặc nội dung chuyển khoản để chúng tôi kiểm tra thông tin.</div>".
-                    "<div style='text-align: center'>HOTLINE HỖ TRỢ THANH TOÁN: 0939.123.456</div>",
-                'tt_taoMoi'   => $today->format('Y-m-d H:i:s'),
-                'tt_capNhat'  => $today->format('Y-m-d H:i:s')
-            ]
-        ];
-        DB::table('cusc_thanhtoan')->insert($list);
+        $faker= Faker\Factory::create('vi_VN');
+        $now = new Carbon('2019-11-28','Asia/Ho_Chi_Minh');
+        $list= [];
+        for($i=1; $i <=100; $i++){
+            $create = $now->copy()->addSeconds($faker->numberBetween(1,259200));
+            $updated = $now->copy()->addSeconds($faker->numberBetween(300,172000));
+            $data = [
+               // 'tt_ten'=>$faker->text(100);
+                'tt_dienGiai'=>$faker->paragraph(),
+                'tt_taomoi'=>$create,
+                'tt_capnhat'=>$create,
+                'tt_trangthai'=>$faker->numberBetween(1, 2)
+            ];
+        
+        array_push($list,$data);
+        $now = $updated->copy();
+         }
+         DB::table('cusc_thanhtoan')->insert($list);
     }
 }

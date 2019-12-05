@@ -14,8 +14,8 @@ class CreateCuscKhuyenmaiTable extends Migration
     public function up()
     {
         Schema::create('khuyenmai', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('km_ma');
+            $table->string('km_ten');
         });
     }
 

@@ -23,8 +23,8 @@ class CreateCuscChitietnhapTable extends Migration
             
             $table->primary(['pn_ma', 'sp_ma', 'm_ma']);
             $table->foreign('m_ma')->references('m_ma')->on('cusc_mau')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreign('pn_ma')->references('pn_ma')->on('cusc_phieunhap')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreign('sp_ma')->references('sp_ma')->on('cusc_sanpham')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('pn_ma')->references('pn_ma')->on('cusc_phieunhap')->onDelete('')->onUpdate('');
+            $table->foreign('sp_ma')->references('sp_ma')->on('cusc_sanpham')->onDelete('')->onUpdate('');
         });
         DB::statement("ALTER TABLE `cusc_chitietnhap` comment 'Chi tiết nhập # Chi tiết phiếu nhập: sản phẩm, màu, số lượng, đơn giá, phiếu nhập'");
     }
